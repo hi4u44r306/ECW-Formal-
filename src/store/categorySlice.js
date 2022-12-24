@@ -1,8 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import categories from "../db/categories";
 import products from "../db/products";
-import productsincategories from "../db/productsincategories";
-import { BASE_URL } from "../utils/apiURL";
 import { STATUS } from "../utils/status";
 
 const categorySlice = createSlice({
@@ -60,7 +58,6 @@ export const fetchProductsByCategory = (categoryID, dataType) => {
     return async function fetchCategoryProductThunk(dispatch){
         if(dataType === 'all') dispatch(setCategoriesStatusAll(STATUS.LOADING));
         if(dataType === 'single') dispatch(setCategoriesStatusSingle(STATUS.LOADING));
-        const typeOfPlaylist = window.location.pathname.substring(10);
         try{
             // const response = await fetch(`${BASE_URL}categories/${categoryID}/products`);
             // const data = await response.json();

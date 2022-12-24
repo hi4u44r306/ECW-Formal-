@@ -1,12 +1,9 @@
 import React, {useEffect} from 'react';
-import { setModalData, setIsModalVisible } from '../../store/modalSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchProductsByCategory } from '../../store/categorySlice';
 import { useParams, Link } from 'react-router-dom';
-import { formatPrice } from '../../utils/helpers';
 import SingleProduct from '../../components/SingleProduct/SingleProduct';
 import "./CategoryPage.scss";
-import products from '../../db/products';
 import ProductList from '../../components/ProductList/ProductList';
 
 const CategoryPage = () => {
@@ -16,10 +13,6 @@ const CategoryPage = () => {
 
     const {isModalVisible} = useSelector((state) => state.modal);
 
-    const viewModalHandler = (data) => {
-        dispatch(setModalData(data));
-        dispatch(setIsModalVisible(true));
-    }
 
     // const {catProductSingle: products, catProductSingleStatus: status} = useSelector((state) => state.category);
 
