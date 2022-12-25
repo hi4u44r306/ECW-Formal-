@@ -53,7 +53,7 @@ const CartPage = () => {
                                     <div className="cart-items grid">
                                         {
                                             cartProducts.map(cartProduct => (
-                                                <div className='cart-item grid' key={cartProduct.id}>
+                                                <div className='cart-item grid' key={cartProduct.title}>
                                                     <div className='cart-item-img flex flex-column bg-white'>
                                                         <img src={require("../.././assets/images/" + cartProduct.category.img)} alt={cartProduct.title} />
                                                         <button type="button" className='btn-square rmv-from-cart-btn' onClick={() => dispatch(removeFromCart(cartProduct.id))}>
