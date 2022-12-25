@@ -4,6 +4,7 @@ import { fetchProducts } from '../../store/productSlice';
 import { fetchCategories } from '../../store/categorySlice';
 import "./HomePage.scss";
 import AllProducts from '../../components/AllProducts/AllProducts';
+import Slider from '../../components/Slider/Slider';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const HomePage = () => {
 
   return (
     <div className="home-page">
+      <Slider />
       <AllProducts />
       {/* <section>
         { productsByCategory[0] && <SingleCategory products = {productsByCategory[0]} status = {catProductAllStatus} /> }

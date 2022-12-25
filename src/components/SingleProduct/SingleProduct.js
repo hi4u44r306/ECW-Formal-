@@ -66,9 +66,9 @@ const SingleProduct = () => {
             <div className="details-info">
               <h3 className="title text-regal-blue fs-22 fw-5">{product.title}</h3>
               <p className='description text-pine-green'>{product.description}</p>
-              <div className='price fw-7 fs-24'>Price: {formatPrice(product.price)}</div>
+              <div className='price fw-7 fs-24'>價格 : {formatPrice(product.price)}</div>
               <div className="qty flex">
-                <span className="text-light-blue qty-text">Qty: </span>
+                <span className="text-light-blue qty-text">數量 : </span>
                 <div className="qty-change flex">
                   <button type="button" className='qty-dec fs-14' onClick={() => decreaseQty()}>
                     <i className="fas fa-minus text-light-blue"></i>
@@ -83,7 +83,7 @@ const SingleProduct = () => {
                 <span className="btn-icon">
                   <i className='fas fa-cart-shopping'></i>
                 </span>
-                <span className='btn-text'>Add To Cart</span>
+                <span className='btn-text'>加入購物車</span>
               </button>
             </div>
           </div>

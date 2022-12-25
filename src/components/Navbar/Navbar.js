@@ -68,8 +68,6 @@ const Navbar = () => {
             </button>
           </div>
         </div>
-        <Slider />
-
       </div>
     </nav >
   )

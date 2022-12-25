@@ -46,6 +46,11 @@ const CartPage = () => {
                     <div className='section-title bg-ghost-white'>
                         <h3 className="text-uppercase fw-7 text-regal-blue ls-1">我的購物車</h3>
                     </div>
+                    <div>
+                    </div>
+                    <Link className='text-red fw-7 fs-20' to="/" href="/">
+                        <i className="fa-solid fa-arrow-left"></i> 繼續購物
+                    </Link>
                     {
                         cartProducts.length === 0 ? emptyCartMsg : (
                             <div className="cart-content grid">
