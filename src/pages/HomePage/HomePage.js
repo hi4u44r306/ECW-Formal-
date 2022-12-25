@@ -1,16 +1,15 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import Slider from '../../components/Slider/Slider';
 import Category from '../../components/Category/Category';
-import ProductList from '../../components/ProductList/ProductList';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchProducts } from '../../store/productSlice';
 import { fetchCategories } from '../../store/categorySlice';
 import "./HomePage.scss";
+import AllProducts from '../../components/AllProducts/AllProducts';
 
 const HomePage = () => {
   const dispatch = useDispatch();
-  const {data: categories, status: categoryStatus} = useSelector((state) => state.category);
-  const {data: products, status: productStatus} = useSelector((state) => state.product);
+  const { data: categories, status: categoryStatus } = useSelector((state) => state.category);
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -21,10 +20,9 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className = "home-page">
-      <Slider />
-      <Category categories = {categories} status = {categoryStatus} />
-      <ProductList products = {products} status = {productStatus} />
+    <div className="home-page">
+      {/* <Category categories = {categories} status = {categoryStatus} /> */}
+      <AllProducts />
       {/* <section>
         { productsByCategory[0] && <SingleCategory products = {productsByCategory[0]} status = {catProductAllStatus} /> }
       </section> */}

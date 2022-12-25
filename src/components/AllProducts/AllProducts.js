@@ -1,6 +1,6 @@
 import React from 'react';
 import { STATUS } from '../../utils/status';
-import "./ProductList.scss";
+import "./AllProducts.scss";
 import { setModalData, setIsModalVisible } from '../../store/modalSlice';
 import SingleProduct from '../SingleProduct/SingleProduct';
 import { useSelector, useDispatch } from 'react-redux';
@@ -9,7 +9,7 @@ import Loader from '../Loader/Loader';
 import Error from '../Error/Error';
 import products from '../../db/products';
 
-const ProductList = ({ status }) => {
+const AllProducts = ({ status }) => {
     const dispatch = useDispatch();
     const { isModalVisible } = useSelector((state) => state.modal);
 
@@ -20,17 +20,18 @@ const ProductList = ({ status }) => {
 
     if (status === STATUS.ERROR) return (<Error />);
     if (status === STATUS.LOADING) return (<Loader />);
-    const typeOfPlaylist = window.location.pathname.substring(10);
     return (
         <section className='product py-5 bg-ghost-white' id="products">
             {isModalVisible && <SingleProduct />}
 
             <div className='container'>
                 <div className='product-content'>
+                    <div className='section-title'>
+                        <h3 className='text-uppercase fw-7 text-regal-blue ls-1'>! 新品上市 !</h3>
+                    </div>
                     <div className='product-items grid'>
                         {
                             products.map((product) => (
-                                product.type === typeOfPlaylist &&
                                 <div className='product-item bg-white' key={product.title} onClick={() => viewModalHandler(product)}>
                                     <div className='product-item-img'>
                                         <img src={require("../.././assets/images/" + product.category.img)} alt="" />
@@ -66,4 +67,4 @@ const ProductList = ({ status }) => {
     )
 }
 
-export default ProductList
+export default AllProducts

@@ -1,17 +1,22 @@
 let categories = [
     {
-        id: 1,
-        name: "Ring",
+        id: "BestSelling",
+        name: "1225新品上市 / Latest Product",
         image: "categoryRing.png"
     },
     {
-        id: 2,
-        name: "Earring",
+        id: "Ring",
+        name: "戒指 / Ring",
+        image: "categoryRing.png"
+    },
+    {
+        id: "Earring",
+        name: "耳環 / Earring",
         image: "categoryEarring.png"
     },
     {
-        id: 3,
-        name: "Necklace",
+        id: "Necklace",
+        name: "項鍊 / Necklace",
         image: "categoryNecklace.png"
     }
 ]

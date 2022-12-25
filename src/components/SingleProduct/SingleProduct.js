@@ -58,7 +58,7 @@ const SingleProduct = () => {
           {/* details left */}
           <div className = "details-right">
             <div className = "details-img">
-              <img src = {product.images[0]} alt = {product.title} />
+              <img src={require("../.././assets/images/" + product.category.img)} alt = {product.title} />
             </div>
           </div>
           {/* detials right */}

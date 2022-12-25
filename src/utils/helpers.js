@@ -2,5 +2,5 @@ export const formatPrice = (price) => {
     return new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: "USD"
-    }).format(price);
+    }).format(price).replace(/\D00(?=\D*$)/, '');
 }
