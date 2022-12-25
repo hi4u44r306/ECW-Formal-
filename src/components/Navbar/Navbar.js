@@ -4,7 +4,6 @@ import { Link, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCategories } from '../../store/categorySlice';
 import { getCartTotal } from '../../store/cartSlice';
-import Slider from '../Slider/Slider';
 
 const Navbar = () => {
   const dispatch = useDispatch();
