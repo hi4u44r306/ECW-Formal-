@@ -23,6 +23,7 @@ const HomePage = () => {
     <div className="home-page">
       {/* <Category categories = {categories} status = {categoryStatus} /> */}
       <AllProducts />
+      {/* <CategoryPagetest /> */}
       {/* <section>
         { productsByCategory[0] && <SingleCategory products = {productsByCategory[0]} status = {catProductAllStatus} /> }
       </section> */}

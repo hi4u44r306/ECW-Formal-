@@ -47,6 +47,18 @@ let products = [
             img: "categoryNecklace.png"
         },
     },
+    {
+        type: "Necklace",
+        // id: 3,
+        title: "Chanel 項鍊22",
+        price: 300,
+        description: "Necklace is made by gold",
+        category: {
+            id: 3,
+            name: "Necklace",
+            img: "categoryNecklace.png"
+        },
+    },
 
 ]
 
