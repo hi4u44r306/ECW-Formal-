@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import "./Navbar.scss";
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCategories } from '../../store/categorySlice';
 import { getCartTotal } from '../../store/cartSlice';
@@ -56,7 +56,9 @@ const Navbar = () => {
               </button>
               {
                 categories.map(category => (
-                  <li key={category.id}><Link to={`/category/${category.id}`} className="nav-link" onClick={() => setIsSidebarOpen(false)}>{category.name}</Link></li>
+                  <li key={category.id}>
+                    <NavLink to={`/category/${category.id}`} className="nav-link" onClick={() => setIsSidebarOpen(false)}>{category.name}</NavLink>
+                  </li>
                 ))
               }
             </ul>
@@ -69,7 +71,7 @@ const Navbar = () => {
         <Slider />
 
       </div>
-    </nav>
+    </nav >
   )
 }
 

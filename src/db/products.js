@@ -47,6 +47,7 @@ let products = [
             img: "categoryNecklace.png"
         },
     },
+
 ]
 
 export default products;
