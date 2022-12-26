@@ -8,6 +8,7 @@ import Footer from "./components/Footer/Footer";
 import { Provider } from 'react-redux';
 import store from "./store/store";
 import Login from './pages/Login/Login';
+import Signup from './pages/Signup/Signup';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/category/:id" element={<Category />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
             <Route path="/cart" element={<Cart />} />
           </Routes>
           <Footer />

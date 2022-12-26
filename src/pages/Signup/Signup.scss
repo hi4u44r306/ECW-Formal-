@@ -1,42 +1,42 @@
-.Logincontainer {
+.Signupcontainer {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.Loginform {
+.Signupform {
   height: fit-content;
   min-width: 35vw;
   box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
   padding: 20px;
   margin: 20px;
 }
-.Logintitle {
+.Signuptitle {
   display: flex;
   justify-content: center;
 }
-.Logininputcontainer {
+.Signupinputcontainer {
   display: flex;
   justify-content: center;
   flex-direction: column;
   gap: 10px;
   margin: 30px 10px 20px 10px;
 }
-.Logininputcontainer > label {
+.Signupinputcontainer > label {
   font-size: 18px;
   font-weight: 700;
 }
-.Logininputcontainer > input {
+.Signupinputcontainer > input {
   border: 2px solid black;
   border-radius: 10px;
   padding: 5px 10px 5px 10px;
 }
-.Loginbtn {
+.Signupbtn {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 10px;
 }
-.Loginforgotpassword {
+.Signupforgotpassword {
   display: flex;
   justify-content: center;
   align-items: center;
