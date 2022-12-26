@@ -60,6 +60,17 @@
           margin-top: 12px;
         }
 
+        .cart-item-info {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+
+        @media screen and (min-width: 320px) {
+          grid-template-columns: 30% auto;
+          column-gap: 14px;
+        }
+
         @media screen and (min-width: 576px) {
           grid-template-columns: 30% auto;
           column-gap: 14px;

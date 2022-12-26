@@ -1,7 +1,7 @@
 let products = [
     {
         type: "BestSelling",
-        // id: 4,
+        id: 0,
         title: "Chanel 耳環 熱銷中",
         price: 10000,
         description: "This is earring made by gold",
@@ -13,7 +13,7 @@ let products = [
     },
     {
         type: "Earring",
-        // id: 1,
+        id: 1,
         title: "Chanel 耳環",
         price: 100,
         description: "This is earring made by gold",
@@ -25,7 +25,7 @@ let products = [
     },
     {
         type: "Ring",
-        // id: 2,
+        id: 2,
         title: "施華洛世奇鑽戒",
         price: 200,
         description: "Ring is made by silver",
@@ -37,7 +37,7 @@ let products = [
     },
     {
         type: "Necklace",
-        // id: 3,
+        id: 3,
         title: "Chanel 項鍊",
         price: 300,
         description: "Necklace is made by gold",
@@ -49,7 +49,7 @@ let products = [
     },
     {
         type: "Necklace",
-        // id: 3,
+        id: 4,
         title: "Chanel 項鍊22",
         price: 300,
         description: "Necklace is made by gold",

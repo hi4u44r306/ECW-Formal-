@@ -34,15 +34,28 @@ const Navbar = () => {
               </button>
             </form>
 
-            <div className="navbar-btns">
-              <Link to="/cart" className="add-to-cart-btn flex">
-                <div className='btn-txt fw-5'>
-                  <span className="btn-ico">
-                    <i className="fa fa-shopping-bag"></i>
-                  </span>
-                  <span className='cart-count-value'>{totalItems}</span>
-                </div>
-              </Link>
+
+            <div className='flex'>
+              <div className="navbar-btns">
+                <Link to="/login" className="add-to-cart-btn flex">
+                  <div className='btn-txt fw-5'>
+                    <span className="btn-ico">
+                      <i className="fa fa-user"></i>
+                    </span>
+                  </div>
+                </Link>
+              </div>
+
+              <div className="navbar-btns">
+                <Link to="/cart" className="add-to-cart-btn flex">
+                  <div className='btn-txt fw-5'>
+                    <span className="btn-ico">
+                      <i className="fa fa-shopping-bag"></i>
+                    </span>
+                    <span className='cart-count-value'>{totalItems}</span>
+                  </div>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

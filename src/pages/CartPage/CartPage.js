@@ -83,7 +83,7 @@ const CartPage = () => {
                                                         <div className="flex flex-between">
                                                             <div className='text-pine-green fw-4 fs-15 price'>金額 : {formatPrice(cartProduct.price)}</div>
                                                             <div className='sub-total fw-6 fs-18 text-regal-blue'>
-                                                                <span>項目總計 : </span>
+                                                                <span>總計 : </span>
                                                                 <span className=''>{formatPrice(cartProduct.totalPrice)}</span>
                                                             </div>
                                                         </div>
@@ -93,7 +93,7 @@ const CartPage = () => {
                                         }
                                     </div>
                                     <button type="button" className='btn-danger' onClick={() => dispatch(clearCart())}>
-                                        <span className="fs-16">清空購物車</span>
+                                        <span className="fs-16">清空購物車 / Remove All</span>
                                     </button>
                                 </div>
                                 <div className='cart-right bg-white'>

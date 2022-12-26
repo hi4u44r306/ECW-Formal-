@@ -48,6 +48,7 @@ const SingleProduct = () => {
     }
   }
 
+
   return (
     <div className='overlay-bg' onClick={modalOverlayHandler}>
       <div className="product-details-modal bg-white">
@@ -94,3 +95,4 @@ const SingleProduct = () => {
 }
 
 export default SingleProduct
+
