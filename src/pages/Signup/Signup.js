@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './Signup.scss'
 import firebase from '../firebase'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class Signup extends React.Component {
 
@@ -15,9 +17,40 @@ class Signup extends React.Component {
         }
     }
 
+    success = ({ history }) => {
+        toast.success('註冊成功', {
+            position: "top-center",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+        history.push("/")
+    };
+
+    error = () => {
+        toast.error('帳號已存在', {
+            position: "top-center",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+    }
+
     Signup(e) {
         e.preventDefault();
-        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then(() => {
+            this.success();
+        }).catch(() => {
+            this.error();
+        })
     }
 
     handleChange(e) {
@@ -30,6 +63,19 @@ class Signup extends React.Component {
         return (
             <div className='Signupcontainer'>
                 <div className='Signupform'>
+                    <ToastContainer
+                        position="top-center"
+                        autoClose={2000}
+                        limit={1}
+                        hideProgressBar={false}
+                        newestOnTop
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover={false}
+                        theme="light"
+                    />
                     <div className='text-regal-blue fs-25 fw-7 Signuptitle'>註冊</div>
                     <div className='Signupinputcontainer'>
                         <label>帳號 / Email</label>

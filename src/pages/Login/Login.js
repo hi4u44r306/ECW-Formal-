@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './Login.scss'
 import firebase from "../firebase";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class Login extends React.Component {
 
@@ -27,15 +29,40 @@ class Login extends React.Component {
         });
     }
 
+    success = () => {
+        toast.success('🦄 登入成功', {
+            position: "top-center",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+        window.location.reload();
+    };
+
+    error = () => {
+        toast.error('帳號密碼錯誤', {
+            position: "top-center",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+    }
+
     login(e) {
         e.preventDefault();
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then(() => {
-                // setTimeout(() => window.location.href = "/", 1000);
-                alert('Login successful')
-                window.location.href = "/"
-            }).catch((error) => {
-                console.log(error);
+                this.success();
+            }).catch(() => {
+                this.error();
             })
     }
 
@@ -55,22 +82,35 @@ class Login extends React.Component {
         })
     }
 
-
     render() {
         return (
             <div className='Logincontainer'>
+
                 {
                     this.currentuser ?
                         <div className='Loginform'>
                             <div className='text-regal-blue fs-25 fw-7 Logintitle'>
                                 {this.currentuser}
                             </div>
-                            <button className='btn-primary' onClick={this.logout}>Logout</button>
+                            <div className='Loginbtn'>
+                                <button className='btn-primary' onClick={this.logout}>Logout</button>
+                            </div>
                         </div>
                         :
                         <div className='Loginform'>
-                            {this.currentuser}
-
+                            <ToastContainer
+                                position="top-center"
+                                autoClose={2000}
+                                limit={1}
+                                hideProgressBar={false}
+                                newestOnTop
+                                closeOnClick
+                                rtl={false}
+                                pauseOnFocusLoss
+                                draggable
+                                pauseOnHover={false}
+                                theme="light"
+                            />
                             <div className='text-regal-blue fs-25 fw-7 Logintitle'>登入</div>
                             <div className='Logininputcontainer'>
                                 <label>帳號 / Email</label>
