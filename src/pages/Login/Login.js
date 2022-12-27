@@ -87,7 +87,7 @@ class Login extends React.Component {
             <div className='Logincontainer'>
 
                 {
-                    localStorage.getItem('currentuser') ?
+                    localStorage.getItem('currentuser') !== '' ?
                         <div className='Loginform'>
                             <div className='text-regal-blue fs-25 fw-7 Logintitle'>
                                 {localStorage.getItem('currentuser')}

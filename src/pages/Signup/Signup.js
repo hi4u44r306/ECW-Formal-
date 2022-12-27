@@ -17,7 +17,7 @@ class Signup extends React.Component {
         }
     }
 
-    success = ({ history }) => {
+    success = () => {
         toast.success('註冊成功', {
             position: "top-center",
             autoClose: 1500,
@@ -28,7 +28,6 @@ class Signup extends React.Component {
             progress: undefined,
             theme: "light",
         });
-        history.push("/")
     };
 
     error = () => {
@@ -48,6 +47,7 @@ class Signup extends React.Component {
         e.preventDefault();
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then(() => {
             this.success();
+            setTimeout(() => { window.location.reload(); }, 1000)
         }).catch(() => {
             this.error();
         })
