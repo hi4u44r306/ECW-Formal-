@@ -87,10 +87,10 @@ class Login extends React.Component {
             <div className='Logincontainer'>
 
                 {
-                    this.currentuser ?
+                    localStorage.getItem('currentuser') ?
                         <div className='Loginform'>
                             <div className='text-regal-blue fs-25 fw-7 Logintitle'>
-                                {this.currentuser}
+                                {localStorage.getItem('currentuser')}
                             </div>
                             <div className='Loginbtn'>
                                 <button className='btn-primary' onClick={this.logout}>Logout</button>

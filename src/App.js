@@ -11,25 +11,24 @@ import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import { UserContext } from './UserContext';
 import firebase from './pages/firebase';
-import { useState } from 'react';
 
 function App() {
-  const [currentuser, setCurrentUser] = useState();
 
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      setCurrentUser(user.email)
+      localStorage.setItem('currentuser', user.email)
     } else {
-      // User is signed out
-      // ...
+      localStorage.setItem('currentuser', '')
     }
   });
+  const user = localStorage.getItem('currentuser');
+
   return (
     <div className="App">
       <Provider store={store}>
         <BrowserRouter>
           <Navbar />
-          <UserContext.Provider value={currentuser}>
+          <UserContext.Provider value={user}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/category/:id" element={<Category />} />
