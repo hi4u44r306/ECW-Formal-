@@ -40,7 +40,7 @@ class Login extends React.Component {
             progress: undefined,
             theme: "light",
         });
-        window.location.reload();
+        window.location.href = "/";
     };
 
     error = () => {
