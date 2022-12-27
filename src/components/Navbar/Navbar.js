@@ -1,14 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./Navbar.scss";
 import { Link, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCategories } from '../../store/categorySlice';
 import { getCartTotal } from '../../store/cartSlice';
-import { UserContext } from '../../UserContext';
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  const msg = useContext(UserContext)
 
   const { data: categories } = useSelector((state) => state.category);
   const { totalItems } = useSelector((state => state.cart));
@@ -35,13 +33,6 @@ const Navbar = () => {
 
             <div className='flex'>
               <div className="navbar-btns">
-                {/* <Link to="/login">
-                  <div className='btn-txt fw-5'>
-                    <span>
-                      {msg}
-                    </span>
-                  </div>
-                </Link> */}
                 <Link to="/login" className="add-to-cart-btn flex">
                   <div className='btn-txt fw-5'>
                     <span className="btn-ico">
