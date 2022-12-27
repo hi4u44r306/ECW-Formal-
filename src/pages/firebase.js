@@ -7,6 +7,7 @@ import "firebase/database";
 const firebaseConfig = {
     apiKey: "AIzaSyAX3oEgGNDNWy2JEnf8t_8UFgvsdVDNU04",
     authDomain: "sunnyvictorshop.firebaseapp.com",
+    databaseURL: "https://sunnyvictorshop-default-rtdb.firebaseio.com",
     projectId: "sunnyvictorshop",
     storageBucket: "sunnyvictorshop.appspot.com",
     messagingSenderId: "707438463341",

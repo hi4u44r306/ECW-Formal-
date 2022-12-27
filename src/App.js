@@ -14,9 +14,21 @@ import firebase from './pages/firebase';
 
 function App() {
 
+
+
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      localStorage.setItem('currentuser', user.email)
+      const dbRef = firebase.database().ref();
+      dbRef.child("Users").child(user.uid).get().then((snapshot) => {
+        if (snapshot.exists()) {
+          localStorage.setItem('currentuser', snapshot.val().username)
+        } else {
+          localStorage.setItem('currentuser', '')
+        }
+      }).catch((error) => {
+        console.error(error);
+      });
+      // 
     } else {
       localStorage.setItem('currentuser', '')
     }

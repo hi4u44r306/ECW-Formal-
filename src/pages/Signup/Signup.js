@@ -13,7 +13,9 @@ class Signup extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.state = {
             email: "",
-            password: ""
+            password: "",
+            name: "",
+            birthday: "",
         }
     }
 
@@ -45,12 +47,20 @@ class Signup extends React.Component {
 
     Signup(e) {
         e.preventDefault();
-        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then(() => {
+
+        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((user) => {
             this.success();
-            setTimeout(() => { window.location.reload(); }, 1000)
+            firebase.database().ref('Users/' + user.user.uid).set({
+                username: this.state.name,
+                email: this.state.email,
+                birthday: this.state.birthday
+            });
+            setTimeout(() => { window.location.href = "/login"; }, 1000)
         }).catch(() => {
             this.error();
         })
+
+
     }
 
     handleChange(e) {
@@ -98,6 +108,27 @@ class Signup extends React.Component {
                             onChange={this.handleChange}
                             onKeyPress={this.handleKeypress}
                             value={this.state.password}
+                        />
+                    </div>
+                    <div className='Logininputcontainer'>
+                        <label>姓名</label>
+                        <input
+                            name="name"
+                            type="text"
+                            id="name"
+                            placeholder="姓名..."
+                            onChange={this.handleChange}
+                            value={this.state.name}
+                        />
+                    </div>
+                    <div className='Logininputcontainer'>
+                        <label>生日</label>
+                        <input
+                            name="birthday"
+                            type="date"
+                            id="birthday"
+                            onChange={this.handleChange}
+                            value={this.state.birthday}
                         />
                     </div>
                     <div className='Signupbtn'>
