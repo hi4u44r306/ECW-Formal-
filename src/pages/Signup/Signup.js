@@ -4,6 +4,7 @@ import './Signup.scss'
 import firebase from '../firebase'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Form } from 'react-bootstrap';
 
 class Signup extends React.Component {
 
@@ -16,6 +17,7 @@ class Signup extends React.Component {
             password: "",
             name: "",
             birthday: "",
+            phonenumber: "",
         }
     }
 
@@ -45,22 +47,37 @@ class Signup extends React.Component {
         });
     }
 
+    empty = () => {
+        toast.warn('註冊資訊不完整', {
+            position: "top-center",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+    }
+
     Signup(e) {
         e.preventDefault();
-
-        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((user) => {
-            this.success();
-            firebase.database().ref('Users/' + user.user.uid).set({
-                username: this.state.name,
-                email: this.state.email,
-                birthday: this.state.birthday
-            });
-            setTimeout(() => { window.location.href = "/login"; }, 1000)
-        }).catch(() => {
-            this.error();
-        })
-
-
+        if (this.state.email || this.state.password || this.state.name || this.state.birthday || this.state.phonenumber === "") {
+            this.empty();
+        } else {
+            firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((user) => {
+                this.success();
+                firebase.database().ref('Users/' + user.user.uid).set({
+                    username: this.state.name,
+                    email: this.state.email,
+                    birthday: this.state.birthday,
+                    phonenumber: this.state.phonenumber,
+                });
+                setTimeout(() => { window.location.href = "/login"; }, 1000)
+            }).catch(() => {
+                this.error();
+            })
+        }
     }
 
     handleChange(e) {
@@ -90,6 +107,7 @@ class Signup extends React.Component {
                     <div className='Signupinputcontainer'>
                         <label>帳號 / Email</label>
                         <input
+                            required
                             name="email"
                             type="email"
                             id="email"
@@ -100,19 +118,21 @@ class Signup extends React.Component {
                     </div>
                     <div className='Signupinputcontainer'>
                         <label>密碼 / Password</label>
-                        <input
+                        <Form.Control
+                            required
                             name="password"
                             type="password"
                             id="password"
                             placeholder="輸入密碼..."
                             onChange={this.handleChange}
-                            onKeyPress={this.handleKeypress}
                             value={this.state.password}
+
                         />
                     </div>
-                    <div className='Logininputcontainer'>
+                    <div className='Signupinputcontainer'>
                         <label>姓名</label>
                         <input
+                            required
                             name="name"
                             type="text"
                             id="name"
@@ -121,14 +141,28 @@ class Signup extends React.Component {
                             value={this.state.name}
                         />
                     </div>
-                    <div className='Logininputcontainer'>
+                    <div className='Signupinputcontainer'>
                         <label>生日</label>
                         <input
+                            required
                             name="birthday"
                             type="date"
                             id="birthday"
                             onChange={this.handleChange}
                             value={this.state.birthday}
+                        />
+                    </div>
+                    <div className='Signupinputcontainer'>
+                        <label>電話號碼</label>
+                        <input
+                            required
+                            name="phonenumber"
+                            type="tel"
+                            id="phonenumber"
+                            placeholder='0912 345 678'
+                            pattern="[0-9]{4}[0-9]{3}-[0-9]{3}"
+                            onChange={this.handleChange}
+                            value={this.state.phonenumber}
                         />
                     </div>
                     <div className='Signupbtn'>
@@ -143,7 +177,7 @@ class Signup extends React.Component {
                         <span>已經有帳號了 ? </span><Link to="/login" className='text-red fw-7'>登入</Link>
                     </div>
                 </div>
-            </div>
+            </div >
         );
     }
 }

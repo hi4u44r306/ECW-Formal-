@@ -21,16 +21,22 @@ function App() {
       const dbRef = firebase.database().ref();
       dbRef.child("Users").child(user.uid).get().then((snapshot) => {
         if (snapshot.exists()) {
-          localStorage.setItem('currentuser', snapshot.val().username)
+          localStorage.setItem('currentusername', snapshot.val().username)
+          localStorage.setItem('currentuseremail', snapshot.val().email)
+          localStorage.setItem('currentuserbirthday', snapshot.val().birthday)
         } else {
-          localStorage.setItem('currentuser', '')
+          localStorage.setItem('currentusername', '')
+          localStorage.setItem('currentuseremail', '')
+          localStorage.setItem('currentuserbirthday', '')
         }
       }).catch((error) => {
         console.error(error);
       });
       // 
     } else {
-      localStorage.setItem('currentuser', '')
+      localStorage.setItem('currentusername', '')
+      localStorage.setItem('currentuseremail', '')
+      localStorage.setItem('currentuserbirthday', '')
     }
   });
   const user = localStorage.getItem('currentuser');
@@ -39,8 +45,8 @@ function App() {
     <div className="App">
       <Provider store={store}>
         <BrowserRouter>
-          <Navbar />
           <UserContext.Provider value={user}>
+            <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/category/:id" element={<Category />} />

@@ -4,6 +4,7 @@ import './Login.scss'
 import firebase from "../firebase";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Userinfo from '../Userinfo/Userinfo';
 
 class Login extends React.Component {
 
@@ -66,16 +67,6 @@ class Login extends React.Component {
             })
     }
 
-    logout(e) {
-        e.preventDefault();
-        firebase.auth().signOut().then(() => {
-            alert('You have been logged out')
-            window.location.reload();
-        }).catch((error) => {
-            console.log(error);
-        });
-    }
-
     handleChange(e) {
         this.setState({
             [e.target.name]: e.target.value
@@ -87,15 +78,8 @@ class Login extends React.Component {
             <div className='Logincontainer'>
 
                 {
-                    localStorage.getItem('currentuser') !== '' ?
-                        <div className='Loginform'>
-                            <div className='text-regal-blue fs-25 fw-7 Logintitle'>
-                                {localStorage.getItem('currentuser')}
-                            </div>
-                            <div className='Loginbtn'>
-                                <button className='btn-primary' onClick={this.logout}>Logout</button>
-                            </div>
-                        </div>
+                    localStorage.getItem('currentusername') !== '' ?
+                        <Userinfo />
                         :
                         <div className='Loginform'>
                             <ToastContainer

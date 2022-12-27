@@ -38,12 +38,17 @@
     }
   }
 
+  .navbar-btns {
+    display: flex;
+    gap: 10px;
+  }
   &-btns {
     .add-to-cart-btn {
       margin-right: 28px;
       color: $clr-pine-green;
       .btn-txt {
         position: relative;
+        margin-right: 10px;
         .cart-count-value {
           position: absolute;
           top: -10px;

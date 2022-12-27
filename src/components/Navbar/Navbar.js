@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import "./Navbar.scss";
 import { Link, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCategories } from '../../store/categorySlice';
 import { getCartTotal } from '../../store/cartSlice';
+import { UserContext } from '../../UserContext';
 
 const Navbar = () => {
   const dispatch = useDispatch();
+  const msg = useContext(UserContext)
+
   const { data: categories } = useSelector((state) => state.category);
   const { totalItems } = useSelector((state => state.cart));
 
@@ -27,16 +30,18 @@ const Navbar = () => {
               <span className="text-regal-blue">S</span><span className='text-gold fs-20'> & </span><span className="text-regal-blue">V</span>
             </Link>
 
-            <form className="navbar-search flex">
-              <input type="text" placeholder='Search here ...' />
-              <button type="submit" className="navbar-search-btn">
-                <i className="fas fa-search"></i>
-              </button>
-            </form>
+
 
 
             <div className='flex'>
               <div className="navbar-btns">
+                {/* <Link to="/login">
+                  <div className='btn-txt fw-5'>
+                    <span>
+                      {msg}
+                    </span>
+                  </div>
+                </Link> */}
                 <Link to="/login" className="add-to-cart-btn flex">
                   <div className='btn-txt fw-5'>
                     <span className="btn-ico">
@@ -66,6 +71,12 @@ const Navbar = () => {
               <button type="button" className='navbar-hide-btn text-white' onClick={() => setIsSidebarOpen(false)}>
                 <i className='fas fa-times'></i>
               </button>
+              <form className="navbar-search flex">
+                <input type="text" placeholder='Search here ...' />
+                <button type="submit" className="navbar-search-btn">
+                  <i className="fas fa-search"></i>
+                </button>
+              </form>
               {
                 categories.map(category => (
                   <li key={category.id}>
