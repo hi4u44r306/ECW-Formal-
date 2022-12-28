@@ -10,28 +10,28 @@ const productSlice = createSlice({
     },
 
     reducers: {
-        setProducts(state, action){
+        setProducts(state, action) {
             state.data = action.payload;
         },
-        setStatus(state, action){
+        setStatus(state, action) {
             state.status = action.payload;
         },
     },
 });
 
-export const {setProducts, setStatus} = productSlice.actions;
+export const { setProducts, setStatus } = productSlice.actions;
 export default productSlice.reducer;
 
 export const fetchProducts = () => {
-    return async function fetchProductThunk(dispatch){
+    return async function fetchProductThunk(dispatch) {
         dispatch(setStatus(STATUS.LOADING));
-        try{
+        try {
             // const response = await fetch(`${BASE_URL}products`);
             // const data = await response.json();
             const data = products
             dispatch(setProducts(data));
             dispatch(setStatus(STATUS.IDLE));
-        } catch(error){
+        } catch (error) {
             dispatch(setStatus(STATUS.ERROR));
         }
     }

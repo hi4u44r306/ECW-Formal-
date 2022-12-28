@@ -4,6 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCategories } from '../../store/categorySlice';
 import { getCartTotal } from '../../store/cartSlice';
+// import SearchBar from '../Searchbar/Searchbar';
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -63,10 +64,11 @@ const Navbar = () => {
                 <i className='fas fa-times'></i>
               </button>
               <form className="navbar-search flex">
-                <input type="text" placeholder='Search here ...' />
+                {/* <SearchBar /> */}
+                {/* <input type="text" placeholder='Search here ...' />
                 <button type="submit" className="navbar-search-btn">
                   <i className="fas fa-search"></i>
-                </button>
+                </button> */}
               </form>
               {
                 categories.map(category => (

@@ -11,6 +11,7 @@ import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import { UserContext } from './UserContext';
 import firebase from './pages/firebase';
+import SearchPage from './pages/SearchPage/SearchPage';
 
 function App() {
 
@@ -53,6 +54,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path="category/search" element={<SearchPage />} />
             </Routes>
           </UserContext.Provider>
           <Footer />
