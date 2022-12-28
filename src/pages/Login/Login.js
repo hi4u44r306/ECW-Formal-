@@ -31,7 +31,7 @@ class Login extends React.Component {
     }
 
     success = () => {
-        toast.success('🦄 登入成功', {
+        toast.success('登入成功', {
             position: "top-center",
             autoClose: 1500,
             hideProgressBar: false,
@@ -41,7 +41,7 @@ class Login extends React.Component {
             progress: undefined,
             theme: "light",
         });
-        window.location.href = "/";
+        setTimeout(() => { window.location.href = "/login"; }, 1000)
     };
 
     error = () => {

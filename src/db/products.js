@@ -1,6 +1,6 @@
 let products = [
     {
-        type: "BestSelling",
+        type: "NewArrival",
         id: 0,
         title: "Chanel 耳環 熱銷中",
         price: 10000,

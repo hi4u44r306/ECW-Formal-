@@ -1,7 +1,7 @@
 let categories = [
     {
-        id: "BestSelling",
-        name: "1225新品上市 / Latest Product",
+        id: "NewArrival",
+        name: "1225新品上市 / New Arrival",
         image: "categoryRing.png"
     },
     {

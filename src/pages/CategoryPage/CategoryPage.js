@@ -36,12 +36,12 @@ const CategoryPage = ({ products }) => {
                                 </span>
                             </Link>
                         </li>
-                        <li>
+                        {/* <li>
                             Category
                             <span className="breadcrumb-separator">
                                 <i className="fas fa-chevron-right"></i>
                             </span>
-                        </li>
+                        </li> */}
                         <li>
                             {typeOfPlaylist}
                         </li>
