@@ -62,7 +62,7 @@ class Signup extends React.Component {
 
     Signup(e) {
         e.preventDefault();
-        if (this.state.email || this.state.password || this.state.name || this.state.birthday || this.state.phonenumber === "") {
+        if (this.state.email && this.state.password && this.state.name && this.state.phonenumber === "") {
             this.empty();
         } else {
             firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((user) => {
@@ -160,7 +160,6 @@ class Signup extends React.Component {
                             type="tel"
                             id="phonenumber"
                             placeholder='0912 345 678'
-                            pattern="[0-9]{4}[0-9]{3}-[0-9]{3}"
                             onChange={this.handleChange}
                             value={this.state.phonenumber}
                         />

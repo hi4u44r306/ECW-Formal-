@@ -11,7 +11,7 @@ const Navbar = () => {
 
   const { data: categories } = useSelector((state) => state.category);
   const { totalItems } = useSelector((state => state.cart));
-
+  const useruid = localStorage.getItem('useruid');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
@@ -29,12 +29,9 @@ const Navbar = () => {
               <span className="text-regal-blue">S</span><span className='text-gold fs-20'> & </span><span className="text-regal-blue">V</span>
             </Link>
 
-
-
-
             <div className='flex'>
               <div className="navbar-btns">
-                <Link to="/login" className="add-to-cart-btn flex">
+                <Link to={`/${useruid}/login`} className="add-to-cart-btn flex">
                   <div className='btn-txt fw-5'>
                     <span className="btn-ico">
                       <i className="fa fa-user"></i>

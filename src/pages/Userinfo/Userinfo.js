@@ -3,6 +3,8 @@ import './Userinfo.scss'
 import firebase from '../firebase'
 
 const Userinfo = () => {
+    const useruid = localStorage.getItem('useruid');
+
     const logout = (e) => {
         e.preventDefault();
         firebase.auth().signOut().then(() => {
@@ -11,6 +13,10 @@ const Userinfo = () => {
         }).catch((error) => {
             console.log(error);
         });
+    }
+
+    const edit = (e) => {
+        window.location.href = `/${useruid}/edit`
     }
     return (
         <div className='Userform'>
@@ -44,6 +50,16 @@ const Userinfo = () => {
                 <div className='infospan'>
                     {localStorage.getItem('currentuserbirthday')}
                 </div>
+            </div>
+            <div className='infocontainer'>
+                <div className='infolabel'>手機號碼 : </div>
+                <div className='infospan'>
+                    {localStorage.getItem('currentuserphonenumber')}
+                </div>
+            </div>
+
+            <div className='Userbtn'>
+                <button className='btn-primary' onClick={edit}>Edit</button>
             </div>
         </div>
     )
