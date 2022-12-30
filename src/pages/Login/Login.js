@@ -79,7 +79,7 @@ class Login extends React.Component {
             <div className='Logincontainer'>
 
                 {
-                    this.user !== '' ?
+                    localStorage.getItem('currentuserbirthday') !== '' ?
                         <Userinfo />
                         :
                         <div className='Loginform'>

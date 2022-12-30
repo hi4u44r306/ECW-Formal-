@@ -12,6 +12,7 @@ const Userinfo = () => {
         if (window.confirm('確定要登出嗎')) {
             firebase.auth().signOut().then(() => {
                 window.location.reload();
+                localStorage.setItem('currentuser', '')
             }).catch((error) => {
                 console.log(error);
             });
@@ -84,31 +85,31 @@ const Userinfo = () => {
             <div className='infocontainer'>
                 <div className='infolabel'>Email : </div>
                 <div className='infospan'>
-                    {localStorage.getItem('currentuseremail') || '無資料'}
+                    {localStorage.getItem('currentuseremail')}
                 </div>
             </div>
             <div className='infocontainer'>
                 <div className='infolabel'>姓名 : </div>
                 <div className='infospan'>
-                    {localStorage.getItem('currentusername') || '無資料'}
+                    {localStorage.getItem('currentusername')}
                 </div>
             </div>
             <div className='infocontainer'>
                 <div className='infolabel'>生日 : </div>
                 <div className='infospan'>
-                    {localStorage.getItem('currentuserbirthday') || '無資料'}
+                    {localStorage.getItem('currentuserbirthday')}
                 </div>
             </div>
             <div className='infocontainer'>
                 <div className='infolabel'>手機號碼 : </div>
                 <div className='infospan'>
-                    {localStorage.getItem('currentuserphonenumber') || '無資料'}
+                    {localStorage.getItem('currentuserphonenumber')}
                 </div>
             </div>
             <div className='infocontainer'>
                 <div className='infolabel'>寄件地址 : </div>
                 <div className='infospan'>
-                    {localStorage.getItem('currentuseraddress') || '無資料'}
+                    {localStorage.getItem('currentuseraddress')}
                 </div>
             </div>
 

@@ -50,14 +50,15 @@ function App() {
       localStorage.setItem('currentuseraddress', '')
     }
   });
-  const user = localStorage.getItem('currentuser');
+  const user = firebase.auth().currentUser;
+  const currentuser = localStorage.setItem('currentuser', user)
   const useruid = localStorage.getItem('useruid');
 
   return (
     <div className="App">
       <Provider store={store}>
         <BrowserRouter>
-          <UserContext.Provider value={user}>
+          <UserContext.Provider value={currentuser}>
             <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
