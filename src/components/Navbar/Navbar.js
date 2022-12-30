@@ -11,7 +11,6 @@ const Navbar = () => {
 
   const { data: categories } = useSelector((state) => state.category);
   const { totalItems } = useSelector((state => state.cart));
-  const useruid = localStorage.getItem('useruid');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
