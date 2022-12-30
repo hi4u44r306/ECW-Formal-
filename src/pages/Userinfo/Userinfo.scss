@@ -58,11 +58,18 @@
   border-radius: 10px;
   padding: 5px 10px 5px 10px;
 }
-.Userbtn {
+.Userlogoutbtn {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 10px;
+}
+.Userinfobtn {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 10px;
+  gap: 20px;
 }
 .Userforgotpassword {
   display: flex;

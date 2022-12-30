@@ -18,6 +18,7 @@ class Signup extends React.Component {
             name: "",
             birthday: "",
             phonenumber: "",
+            address: "",
         }
     }
 
@@ -62,7 +63,7 @@ class Signup extends React.Component {
 
     Signup(e) {
         e.preventDefault();
-        if (this.state.email && this.state.password && this.state.name && this.state.phonenumber === "") {
+        if (this.state.email == null || this.state.email === "" || this.state.email == null || this.state.email === "" || this.state.name == null || this.state.name === "" || this.state.birthday == null || this.state.birthday === "" || this.state.phonenumber == null || this.state.phonenumber === "" || this.state.address == null || this.state.address === "") {
             this.empty();
         } else {
             firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((user) => {
@@ -72,6 +73,7 @@ class Signup extends React.Component {
                     email: this.state.email,
                     birthday: this.state.birthday,
                     phonenumber: this.state.phonenumber,
+                    address: this.state.address,
                 });
                 setTimeout(() => { window.location.href = "/login"; }, 1000)
             }).catch(() => {
@@ -142,7 +144,7 @@ class Signup extends React.Component {
                         />
                     </div>
                     <div className='Signupinputcontainer'>
-                        <label>生日</label>
+                        <label>生日 </label>
                         <input
                             required
                             name="birthday"
@@ -160,8 +162,22 @@ class Signup extends React.Component {
                             type="tel"
                             id="phonenumber"
                             placeholder='0912 345 678'
+                            pattern="[0-9]{4}[0-9]{3}[0-9]{3}"
+                            maxLength={10}
                             onChange={this.handleChange}
                             value={this.state.phonenumber}
+                        />
+                    </div>
+                    <div className='Signupinputcontainer'>
+                        <label>收件地址</label>
+                        <input
+                            required
+                            name="address"
+                            type="text"
+                            id="address"
+                            placeholder='台北市信義區555巷555號3樓'
+                            onChange={this.handleChange}
+                            value={this.state.address}
                         />
                     </div>
                     <div className='Signupbtn'>

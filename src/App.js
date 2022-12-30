@@ -28,12 +28,14 @@ function App() {
           localStorage.setItem('currentuseremail', snapshot.val().email)
           localStorage.setItem('currentuserbirthday', snapshot.val().birthday)
           localStorage.setItem('currentuserphonenumber', snapshot.val().phonenumber)
+          localStorage.setItem('currentuseraddress', snapshot.val().address)
         } else {
           localStorage.setItem("useruid", '');
           localStorage.setItem('currentusername', '')
           localStorage.setItem('currentuseremail', '')
           localStorage.setItem('currentuserbirthday', '')
           localStorage.setItem('currentuserphonenumber', '')
+          localStorage.setItem('currentuseraddress', '')
         }
       }).catch((error) => {
         console.error(error);
@@ -45,6 +47,7 @@ function App() {
       localStorage.setItem('currentuseremail', '')
       localStorage.setItem('currentuserbirthday', '')
       localStorage.setItem('currentuserphonenumber', '')
+      localStorage.setItem('currentuseraddress', '')
     }
   });
   const user = localStorage.getItem('currentuser');

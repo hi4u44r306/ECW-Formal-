@@ -2,7 +2,7 @@ import React from 'react'
 // import { Link } from 'react-router-dom'
 import './Edit.scss'
 import firebase from "../firebase";
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -12,15 +12,16 @@ class Edit extends React.Component {
         super(props)
         this.handleChange = this.handleChange.bind(this);
         this.state = {
-            email: "",
             username: "",
+            phonenumber: "",
+            address: "",
         }
     }
+    useruid = localStorage.getItem('useruid');
+    dbRef = firebase.database().ref();
 
     componentDidMount() {
-        const useruid = localStorage.getItem('useruid');
-        const dbRef = firebase.database().ref();
-        dbRef.child("Users").child(useruid).get().then((snapshot) => {
+        this.dbRef.child("Users").child(this.useruid).get().then((snapshot) => {
             this.setState({ ...snapshot.val() })
         }).catch(() => {
             this.setState({})
@@ -28,7 +29,7 @@ class Edit extends React.Component {
     }
 
     success = () => {
-        toast.success('登入成功', {
+        toast.success('修改成功', {
             position: "top-center",
             autoClose: 1500,
             hideProgressBar: false,
@@ -55,7 +56,21 @@ class Edit extends React.Component {
     }
 
     update = () => {
-        alert("Update")
+        this.dbRef.child("Users").child(this.useruid).update({
+            username: this.state.username,
+            address: this.state.address,
+            phonenumber: this.state.phonenumber,
+        }).then(() => {
+            localStorage.setItem("currentusername", this.state.username);
+            localStorage.setItem('currentuserphonenumber', this.state.phonenumber)
+            localStorage.setItem('currentuseraddress', this.state.address)
+            this.success();
+            setTimeout(() => {
+                window.location.href = "/login"
+            }, 1000);
+        }).catch(() => {
+            this.error();
+        })
     }
 
     handleChange(e) {
@@ -67,14 +82,19 @@ class Edit extends React.Component {
     render() {
         return (
             <div className='Editcontainer'>
+                <ToastContainer />
                 <div className='Loginform'>
-                    <div className='Logininputcontainer'>
-                        <label>帳號 / Email</label>
-                        <input name='email' value={this.state.email} onChange={this.handleChange} />
-                    </div>
                     <div className='Logininputcontainer'>
                         <label>用戶名稱 / UserName</label>
                         <input name='username' value={this.state.username} onChange={this.handleChange} />
+                    </div>
+                    <div className='Logininputcontainer'>
+                        <label>電話號碼 / Phonenumber</label>
+                        <input name='phonenumber' pattern="[0-9]{4}[0-9]{3}[0-9]{3}" maxLength={10} value={this.state.phonenumber} onChange={this.handleChange} />
+                    </div>
+                    <div className='Logininputcontainer'>
+                        <label>寄件地址 / Address</label>
+                        <input name='address' value={this.state.address} onChange={this.handleChange} />
                     </div>
                     <div className='Loginbtn'>
                         <button className="btn-primary"

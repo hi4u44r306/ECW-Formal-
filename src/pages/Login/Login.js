@@ -72,13 +72,14 @@ class Login extends React.Component {
             [e.target.name]: e.target.value
         })
     }
+    user = localStorage.getItem('currentuser');
 
     render() {
         return (
             <div className='Logincontainer'>
 
                 {
-                    localStorage.getItem('currentusername') !== '' ?
+                    this.user !== '' ?
                         <Userinfo />
                         :
                         <div className='Loginform'>

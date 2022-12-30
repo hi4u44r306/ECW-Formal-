@@ -1,27 +1,75 @@
 import React from 'react'
 import './Userinfo.scss'
 import firebase from '../firebase'
+import { toast } from 'react-toastify';
 
 const Userinfo = () => {
     const useruid = localStorage.getItem('useruid');
+    const dbRef = firebase.database().ref();
 
     const logout = (e) => {
         e.preventDefault();
-        firebase.auth().signOut().then(() => {
-            alert('You have been logged out')
-            window.location.reload();
-        }).catch((error) => {
-            console.log(error);
+        if (window.confirm('確定要登出嗎')) {
+            firebase.auth().signOut().then(() => {
+                window.location.reload();
+            }).catch((error) => {
+                console.log(error);
+            });
+        }
+    }
+
+    const success = () => {
+        toast.success('用戶已刪除', {
+            position: "top-center",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+        setTimeout(() => { window.location.href = "/login"; }, 1000)
+    };
+
+    const error = () => {
+        toast.error('無法刪除', {
+            position: "top-center",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
         });
     }
 
-    const edit = (e) => {
+    const deleteaccount = () => {
+        const user = firebase.auth().currentUser;
+        if (window.confirm('Are you sure you want to delete')) {
+            dbRef.child(`Users/${useruid}`).remove((err) => {
+                if (err) {
+                    error();
+                } else {
+                    success();
+                }
+            })
+            user.delete().then(() => {
+                success();
+            }).catch(() => {
+                error();
+            });
+        }
+    }
+
+    const edit = () => {
         window.location.href = `/${useruid}/edit`
     }
     return (
         <div className='Userform'>
-            <div className='Userbtn'>
-                <button className='btn-primary' onClick={logout}>Logout</button>
+            <div className='Userlogoutbtn'>
+                <button className='btn-danger' onClick={logout}>登出</button>
             </div>
             <div className='topusername'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
@@ -36,30 +84,37 @@ const Userinfo = () => {
             <div className='infocontainer'>
                 <div className='infolabel'>Email : </div>
                 <div className='infospan'>
-                    {localStorage.getItem('currentuseremail')}
+                    {localStorage.getItem('currentuseremail') || '無資料'}
                 </div>
             </div>
             <div className='infocontainer'>
                 <div className='infolabel'>姓名 : </div>
                 <div className='infospan'>
-                    {localStorage.getItem('currentusername')}
+                    {localStorage.getItem('currentusername') || '無資料'}
                 </div>
             </div>
             <div className='infocontainer'>
                 <div className='infolabel'>生日 : </div>
                 <div className='infospan'>
-                    {localStorage.getItem('currentuserbirthday')}
+                    {localStorage.getItem('currentuserbirthday') || '無資料'}
                 </div>
             </div>
             <div className='infocontainer'>
                 <div className='infolabel'>手機號碼 : </div>
                 <div className='infospan'>
-                    {localStorage.getItem('currentuserphonenumber')}
+                    {localStorage.getItem('currentuserphonenumber') || '無資料'}
+                </div>
+            </div>
+            <div className='infocontainer'>
+                <div className='infolabel'>寄件地址 : </div>
+                <div className='infospan'>
+                    {localStorage.getItem('currentuseraddress') || '無資料'}
                 </div>
             </div>
 
-            <div className='Userbtn'>
-                <button className='btn-primary' onClick={edit}>Edit</button>
+            <div className='Userinfobtn'>
+                <button className='btn-danger' onClick={deleteaccount}>刪除帳號</button>
+                <button className='btn-primary' onClick={edit}>更新會員資料</button>
             </div>
         </div>
     )
