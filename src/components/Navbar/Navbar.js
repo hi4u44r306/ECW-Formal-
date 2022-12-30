@@ -31,7 +31,7 @@ const Navbar = () => {
 
             <div className='flex'>
               <div className="navbar-btns">
-                <Link to={`/${useruid}/login`} className="add-to-cart-btn flex">
+                <Link to="/login" className="add-to-cart-btn flex">
                   <div className='btn-txt fw-5'>
                     <span className="btn-ico">
                       <i className="fa fa-user"></i>

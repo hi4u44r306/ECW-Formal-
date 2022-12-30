@@ -59,7 +59,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/category/:id" element={<Category />} />
-              <Route path={`/${useruid}/login`} element={<Login />} />
+              <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path={`/${useruid}/edit`} element={<EditPage />} />
               <Route path="/cart" element={<Cart />} />
