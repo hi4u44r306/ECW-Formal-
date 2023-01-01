@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 // import { Link } from 'react-router-dom'
 import './Edit.scss'
 import firebase from "../firebase";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 
 class Edit extends React.Component {
@@ -12,6 +13,7 @@ class Edit extends React.Component {
         super(props)
         this.handleChange = this.handleChange.bind(this);
         this.state = {
+            loading: true,
             username: "",
             phonenumber: "",
             address: "",
@@ -26,6 +28,9 @@ class Edit extends React.Component {
         }).catch(() => {
             this.setState({})
         });
+        setTimeout(() => {
+            this.setState({ loading: false });
+        }, 1000);
     }
 
     success = () => {
@@ -86,15 +91,44 @@ class Edit extends React.Component {
                 <div className='Loginform'>
                     <div className='Logininputcontainer'>
                         <label>用戶名稱 / UserName</label>
-                        <input name='username' value={this.state.username} onChange={this.handleChange} />
+                        {
+                            this.state.loading ?
+                                <ScaleLoader
+                                    loading={this.loading}
+                                    color="hsla(209, 100%, 69%, 1)"
+                                    height={25}
+                                />
+                                :
+                                <input name='username' value={this.state.username} onChange={this.handleChange} />
+                        }
                     </div>
                     <div className='Logininputcontainer'>
                         <label>電話號碼 / Phonenumber</label>
-                        <input name='phonenumber' pattern="[0-9]{4}[0-9]{3}[0-9]{3}" maxLength={10} value={this.state.phonenumber} onChange={this.handleChange} />
+                        {
+                            this.state.loading ?
+                                <ScaleLoader
+                                    loading={this.loading}
+                                    color="hsla(209, 100%, 69%, 1)"
+                                    height={25}
+                                />
+                                :
+                                <input name='phonenumber' pattern="[0-9]{4}[0-9]{3}[0-9]{3}" maxLength={10} value={this.state.phonenumber} onChange={this.handleChange} />
+                        }
+
                     </div>
                     <div className='Logininputcontainer'>
                         <label>寄件地址 / Address</label>
-                        <input name='address' value={this.state.address} onChange={this.handleChange} />
+                        {
+                            this.state.loading ?
+                                <ScaleLoader
+                                    loading={this.loading}
+                                    color="hsla(209, 100%, 69%, 1)"
+                                    height={25}
+                                />
+                                :
+                                <input name='address' value={this.state.address} onChange={this.handleChange} />
+                        }
+
                     </div>
                     <div className='Loginbtn'>
                         <button className="btn-primary"

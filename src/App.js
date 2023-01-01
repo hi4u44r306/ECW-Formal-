@@ -58,8 +58,8 @@ function App() {
     <div className="App">
       <Provider store={store}>
         <BrowserRouter>
+          <Navbar />
           <UserContext.Provider value={currentuser}>
-            <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/category/:id" element={<Category />} />

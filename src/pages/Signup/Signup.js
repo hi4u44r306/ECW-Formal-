@@ -25,13 +25,13 @@ class Signup extends React.Component {
     success = () => {
         toast.success('註冊成功', {
             position: "top-center",
-            autoClose: 1500,
+            autoClose: 2500,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: false,
             draggable: true,
             progress: undefined,
-            theme: "light",
+            theme: "colored",
         });
     };
 
@@ -44,7 +44,7 @@ class Signup extends React.Component {
             pauseOnHover: false,
             draggable: true,
             progress: undefined,
-            theme: "light",
+            theme: "colored",
         });
     }
 
@@ -57,7 +57,7 @@ class Signup extends React.Component {
             pauseOnHover: false,
             draggable: true,
             progress: undefined,
-            theme: "light",
+            theme: "colored",
         });
     }
 
@@ -75,7 +75,7 @@ class Signup extends React.Component {
                     phonenumber: this.state.phonenumber,
                     address: this.state.address,
                 });
-                setTimeout(() => { window.location.href = "/login"; }, 1000)
+                setTimeout(() => { window.location.href = "/login"; }, 3000)
             }).catch(() => {
                 this.error();
             })
